@@ -9,7 +9,7 @@ public class StringUtils {
         return count > 0 ? s + repeat(s, count - 1) : "";
     }
 
-    private static String applySha256(String input) {
+    public static String applySha256(String input) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] hash = digest.digest(input.getBytes(StandardCharsets.UTF_8));

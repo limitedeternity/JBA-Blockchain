@@ -4,8 +4,7 @@ import java.util.regex.Pattern;
 
 public class PrismaShop {
     private static final String serviceId = "dSJxhS6faBIZPY0";
-    private static final String signature =
-            "UHJpc21hU2hvcA==#ZWM1MjU3ODg1NDQ2YmUzYjdiZDQxMzI3MGIxYTJkZGFlOWVlOGQxZjM5ZjljZGMyOGY5OGI1ZjE0ZTA4MWMwZA==";
+    private static final String signature = "ec5257885446be3b7bd413270b1a2ddae9ee8d1f39f9cdc28f98b5f14e081c0d";
 
     private final Blockchain instance;
     public enum Products {

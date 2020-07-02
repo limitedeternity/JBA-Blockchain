@@ -1,7 +1,6 @@
 public class ChatService {
     private static final String serviceId = "dUaKL3CEiFx6mQB8mBTf";
-    private static final String signature =
-            "Q2hhdFNlcnZpY2U=#MDZjNDU5OTg4M2VmYzVmMGE1MzUzZDg3Mzk4ZWZjZTAwM2UwN2I4NWIxYTBlMDA2OTE5OTI1ZDgzNmY2N2Q1Yg==";
+    private static final String signature = "06c4599883efc5f0a5353d87398efce003e07b85b1a0e006919925d836f67d5b";
 
     private final Blockchain instance;
 

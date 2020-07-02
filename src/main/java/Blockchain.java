@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -14,13 +13,13 @@ public class Blockchain implements Serializable {
 
     private final List<Map<String, String>> serviceData = new ArrayList<>();
     private final HashMap<String, HashMap<String, String>> knownServices = new HashMap<>() {{
-        put("ChatService", new HashMap<>() {{
-            put("signature", "06c4599883efc5f0a5353d87398efce003e07b85b1a0e006919925d836f67d5b");
+        put("dUaKL3CEiFx6mQB8mBTf", new HashMap<>() {{
+            put("signature", "0f34eeee95f4b6b225c41d45b52669ea92c3ca828e40ba4de116662cd648e2e6");
             put("permissions", "");
         }});
 
-        put("PrismaShop", new HashMap<>() {{
-            put("signature", "ec5257885446be3b7bd413270b1a2ddae9ee8d1f39f9cdc28f98b5f14e081c0d");
+        put("dSJxhS6faBIZPY0", new HashMap<>() {{
+            put("signature", "e8bac969ef741e3d2d55c288254446746ad8b697f55977e14dacb0d6dcb376c0");
             put("permissions", "transact");
         }});
     }};
@@ -82,16 +81,14 @@ public class Blockchain implements Serializable {
     }
 
     public void acceptServiceData(String serviceId, String signature, String data) {
-        String[] parts = signature.split("#");
-        String serviceName = new String(Base64.getDecoder().decode(parts[0].getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
-        String serviceSignature = new String(Base64.getDecoder().decode(parts[1].getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
-        if (!knownServices.containsKey(serviceName) || !knownServices.get(serviceName).get("signature").equals(serviceSignature)) {
+        if (!knownServices.containsKey(serviceId)
+                || !knownServices.get(serviceId).get("signature").equals(StringUtils.applySha256(signature))) {
             return;
         }
 
         // Potential Chain of Responsibility pattern
         if (data.matches("^(\\d+) bought (.+) for (\\d+) VC$")
-                && !knownServices.get(serviceName).get("permissions").contains("transact")) {
+                && !knownServices.get(serviceId).get("permissions").contains("transact")) {
             return;
         }
 
