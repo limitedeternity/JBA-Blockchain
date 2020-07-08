@@ -61,18 +61,12 @@ public class Blockchain implements Serializable {
 
         if (verbose) {
             System.out.print(block.toString());
-            switch (hashZerosDelta) {
-                case 0:
-                    System.out.print("N stays the same\n\n");
-                    break;
-
-                case -1:
-                    System.out.printf("N was decreased to %d\n\n", hashZeros);
-                    break;
-
-                case 1:
-                    System.out.printf("N was increased to %d\n\n", hashZeros);
-                    break;
+            if (hashZerosDelta > 0) {
+                System.out.printf("N was increased to %d\n\n", hashZeros);
+            } else if (hashZerosDelta < 0) {
+                System.out.printf("N was decreased to %d\n\n", hashZeros);
+            } else {
+                System.out.print("N stays the same\n\n");
             }
         }
 
